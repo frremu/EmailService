@@ -16,7 +16,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        
+     //Hangfire bg service  , can be ignored if not scheduler
         var options = new MongoStorageOptions
         {
             MigrationOptions = new MongoMigrationOptions
@@ -26,7 +26,7 @@ class Program
             }
         };
         var mongoStorage = new MongoStorage(
-                        MongoClientSettings.FromConnectionString("mongodb+srv://ufarooq:R3fundUnt!l3355@cluster0.hjwxxbp.mongodb.net/?retryWrites=true&w=majority"),
+                        MongoClientSettings.FromConnectionString("connection string"), //connection string
                         "Mbot_HangFire", // database name
                         options);
 
@@ -37,8 +37,8 @@ class Program
         
 
 
-
-        var message = new Message(new string[] { "umerfarooqnu@gmail.com" }, "test", "Email successfully sent from k201625");
+        //receiptent's email,subject and message body
+        var message = new Message(new string[] { "Senders email" }, "test", "Email successfully sent from k201625");
 
         var emailService = new ServiceEmailcs();
 

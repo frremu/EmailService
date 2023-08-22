@@ -19,9 +19,9 @@ namespace EmailMicroService.Services
             using var client = new SmtpClient();
             try
             {
-                client.Connect("smtp.4dmagic.pk", 465, true);
+                client.Connect("Enter your domain smtp", 465, true);
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
-                client.Authenticate("u.farooq@4dmagic.pk", "Whiterose420");
+                client.Authenticate("email", "password");
 
                 client.Send(emailMessage);
             }
@@ -39,7 +39,7 @@ namespace EmailMicroService.Services
         private MimeMessage CreateEmailMessage(Message message)
         {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("email", "u.farooq@4dmagic.pk"));
+            emailMessage.From.Add(new MailboxAddress("email", "email"));
             emailMessage.To.AddRange(message.To);
             emailMessage.Subject = message.Subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
